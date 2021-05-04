@@ -9,3 +9,4 @@ I do this in R for three reasons:
 All the stats collected here can be found on [my website](https://quantumlandbook.wixsite.com/quantumlandbook/wips) together with the current word counts for each WIP and more. 
 
 I'm always open to any suggestions, so let me know on [twitter](https://twitter.com/quantumlandbook), if you have any ideas for improving the code. 
+<a href="https://www.buymeacoffee.com/quantumlandbook" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
