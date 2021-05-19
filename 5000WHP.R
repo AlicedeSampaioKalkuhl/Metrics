@@ -5,7 +5,6 @@ library(cowplot)
 library(imager)
 library(lubridate)
 
-setwd("C:/alice/Documents/GitHub/Metrics") #adjust to your own repository
 Sprints <- read.delim("Sprints.txt", header=TRUE, sep = ",",fileEncoding="UTF-8-BOM",stringsAsFactors = FALSE)
 Sprints <- Sprints %>%
   mutate(WPH =Count*(60/Time))%>%
