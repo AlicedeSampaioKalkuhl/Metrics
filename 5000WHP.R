@@ -50,7 +50,7 @@ dev.off()
 monthly <- plot_grid(
   ggplot(Averages, aes(x=month, y= WPH, fill=WPH))+
     geom_bar(stat="identity", width=1)+
-    scale_fill_viridis(option="plasma", direction=-1)+
+    scale_fill_viridis()+
     theme(axis.text.x=element_text(angle=60,hjust=1))+
     facet_wrap(~year),
   ggplot(Averages, aes(x=month, y= WPD, fill=WPD))+
