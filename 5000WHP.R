@@ -32,7 +32,7 @@ Averages <- Summary %>% mutate(month = format(Date,"%m"),
   summarise(WPH = mean(WPH),WPD=mean(WPD)) 
 
 progress <- ggplot(Progress, aes(x=Date, y= WPH, fill=WPH))+
-  geom_hline(yintercept=604, colour="blue")+
+  geom_hline(yintercept=280, colour="blue")+
   geom_bar(stat="identity", width=1)+
   scale_fill_viridis(option="plasma", direction=-1)+
   ylab("average words per hour")+
@@ -40,7 +40,7 @@ progress <- ggplot(Progress, aes(x=Date, y= WPH, fill=WPH))+
 
 png("daily.png",)
 ggplot(Consistency, aes(x=Date, y= WPD, fill=WPD))+
-  geom_hline(yintercept=125, colour="blue")+
+  geom_hline(yintercept=330, colour="blue")+
   geom_bar(stat="identity", width=1)+
   scale_fill_viridis(option="plasma", direction=-1)+
   ylab("daily words")+
