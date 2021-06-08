@@ -34,7 +34,7 @@ Averages <- Summary %>% mutate(month = format(Date,"%m"),
 progress <- ggplot(Progress, aes(x=Date, y= WPH, fill=WPH))+
   geom_hline(yintercept=280, colour="blue")+
   geom_bar(stat="identity", width=1)+
-  scale_fill_viridis(option="plasma", direction=-1)+
+  scale_fill_viridis(direction=-1)+
   ylab("average words per hour")+
   theme(axis.text.x=element_text(angle=60,hjust=1))+theme_bw()
 
@@ -42,7 +42,7 @@ png("daily.png",)
 ggplot(Consistency, aes(x=Date, y= WPD, fill=WPD))+
   geom_hline(yintercept=330, colour="blue")+
   geom_bar(stat="identity", width=1)+
-  scale_fill_viridis(option="plasma", direction=-1)+
+  scale_fill_viridis(direction=-1)+
   ylab("daily words")+
   theme(axis.text.x=element_text(angle=60,hjust=1))+theme_bw()
 dev.off()
@@ -50,12 +50,12 @@ dev.off()
 monthly <- plot_grid(
   ggplot(Averages, aes(x=month, y= WPH, fill=WPH))+
     geom_bar(stat="identity", width=1)+
-    scale_fill_viridis()+
+    scale_fill_viridis(direction=-1)+
     theme(axis.text.x=element_text(angle=60,hjust=1))+
     facet_wrap(~year),
   ggplot(Averages, aes(x=month, y= WPD, fill=WPD))+
     geom_bar(stat="identity", width=1)+
-    scale_fill_viridis(option="plasma", direction=-1)+
+    scale_fill_viridis(direction=-1)+
     theme(axis.text.x=element_text(angle=60,hjust=1))+
     facet_wrap(~year),
   ncol=1, align="v")
@@ -64,7 +64,7 @@ monthly <- plot_grid(
 
 WriMos<-ggplot(WriMo,aes(x=Date,y=monthly,fill=monthly))+
   geom_bar(stat="identity")+
-  scale_fill_viridis(option="plasma", direction=-1)+
+  scale_fill_viridis(direction=-1)+
   theme_bw()
 
 
