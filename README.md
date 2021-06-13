@@ -1,5 +1,5 @@
 # Creative Writing Stats in R
-This little summary started as a way to use Chris Fox's [5000 words per hour](https://www.chrisfoxwrites.com/write-faster-write-smarter/). The idea is to do writing sprints. Set yourself a timer and just write. At the end of the sprint, count the words and 
+This little summary started as a way to use Chris Fox's [5000 words per hour](https://www.chrisfoxwrites.com/write-faster-write-smarter/). The idea is to do writing sprints. Set yourself a timer and just write. At the end of the sprint, count the words and the R script gives me metrics. 
 
 I do this in R for three reasons: 
 1. ggplot is a really pretty visualisation tool 
