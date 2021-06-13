@@ -6,7 +6,7 @@ I do this in R for three reasons:
 2. I can do something similar to the NaNoWriMo website with the two advantages that I can add word counts in retrospective and edit my wordcounts offline. 
 3. It has actually helps me with my research since I still have to use R. Some of the lines here were actually repurposed for my master thesis. That being said, I'm hoping to also have a Python version soon. 
 
-All the stats collected here can be found on [my website](https://quantumlandbook.wixsite.com/quantumlandbook/wips) together with the current word counts for each WIP and more. 
+![Daily Wordcounts](daily.png)
 
 I'm always open to any suggestions, so let me know on [twitter](https://twitter.com/quantumlandbook), if you have any ideas for improving the code. 
 <a href="https://www.buymeacoffee.com/quantumlandbook" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
