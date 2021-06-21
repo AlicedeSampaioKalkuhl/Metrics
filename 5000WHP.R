@@ -34,43 +34,62 @@ Averages <- Summary %>% mutate(month = format(Date,"%m"),
 progress <- ggplot(Progress, aes(x=Date, y= WPH, fill=WPH))+
   geom_hline(yintercept=280, colour="blue")+
   geom_bar(stat="identity", width=1)+
-  scale_fill_viridis(direction=-1)+
+  scale_fill_viridis(option="turbo")+
   ylab("average words per hour")+
   theme(axis.text.x=element_text(angle=60,hjust=1))+theme_bw()
 
-png("daily.png",)
+consistency<-
 ggplot(Consistency, aes(x=Date, y= WPD, fill=WPD))+
   geom_hline(yintercept=330, colour="blue")+
   geom_bar(stat="identity", width=1)+
-  scale_fill_viridis(direction=-1)+
+  scale_fill_viridis(option="plasma",direction=-1)+
   ylab("daily words")+
   theme(axis.text.x=element_text(angle=60,hjust=1))+theme_bw()
+
+png("daily.png")
+  plot_grid(progress+theme(legend.position="none"),consistency+theme(legend.position="none"))
 dev.off()
 
-monthly <- plot_grid(
+monthly<-
+plot_grid(
   ggplot(Averages, aes(x=month, y= WPH, fill=WPH))+
     geom_bar(stat="identity", width=1)+
     scale_fill_viridis(direction=-1)+
     theme(axis.text.x=element_text(angle=60,hjust=1))+
+    theme(legend.position="none")+
     facet_wrap(~year),
   ggplot(Averages, aes(x=month, y= WPD, fill=WPD))+
     geom_bar(stat="identity", width=1)+
     scale_fill_viridis(direction=-1)+
     theme(axis.text.x=element_text(angle=60,hjust=1))+
-    facet_wrap(~year),
-  ncol=1, align="v")
+    theme(legend.position="none")+
+    facet_wrap(~year)
+)
+dev.off()
 
 
-
-WriMos<-ggplot(WriMo,aes(x=Date,y=monthly,fill=monthly))+
+WriMos<-ggplot(WriMo,aes(x=Date,y=,fill=monthly))+
   geom_bar(stat="identity")+
-  scale_fill_viridis(direction=-1)+
+  scale_fill_viridis(option="turbo")+
+  ylab(" progress")+
   theme_bw()
 
+
+JuNoWriMo<-WriMo%>% 
+  complete(Date = seq.Date(min(Date), as.Date("2021-06-30"), by = "day")) %>% filter(month=="06") %>%
+  mutate(year=format(Date,"%Y")) %>% group_by(year) %>% mutate(goal=seq(from=1667,to=50000,length.out=30)) 
+JuNoWriMo %>%
+  ggplot(aes(Date))+
+    geom_bar(aes(y=goal,fill=goal),stat="identity",position="dodge",width=1)+
+    geom_bar(aes(y=,fill=monthly),stat="identity",position="dodge",width=1)+
+    scale_fill_viridis(option="turbo")
+
+NaNoWriMo <- data.frame(goal=seq(from=1667,to=50000,by=1667))
 
 
 
 View(Averages)
 View(Summary)
 load.image("daily.png")%>%plot(axes=F)
+
 
