@@ -65,7 +65,7 @@ plot_grid(
     theme(legend.position="none")+
     facet_wrap(~year)
 )
-dev.off()
+
 
 
 WriMos<-ggplot(WriMo,aes(x=Date,y=,fill=monthly))+
@@ -74,15 +74,29 @@ WriMos<-ggplot(WriMo,aes(x=Date,y=,fill=monthly))+
   ylab(" progress")+
   theme_bw()
 
-
+#2021
 JuNoWriMo<-WriMo%>% 
-  complete(Date = seq.Date(min(Date), as.Date("2021-06-30"), by = "day")) %>% filter(month=="06") %>%
+  filter(month=="06")%>%
+  complete(Date=seq.Date(min(Date),as.Date("2021-06-30"),by ="day")) %>% 
   mutate(year=format(Date,"%Y")) %>% group_by(year) %>% mutate(goal=seq(from=1667,to=50000,length.out=30)) 
-JuNoWriMo %>%
+JuNoWriMo%>%
   ggplot(aes(Date))+
-    geom_bar(aes(y=goal,fill=goal),stat="identity",position="dodge",width=1)+
-    geom_bar(aes(y=,fill=monthly),stat="identity",position="dodge",width=1)+
-    scale_fill_viridis(option="turbo")
+    geom_bar(aes(y=goal,fill=goal),stat="identity",position="dodge",width=1,alpha=0.5)+
+    geom_bar(aes(y=monthly,fill=monthly),stat="identity",position="dodge",width=1)+
+    scale_fill_viridis(option="turbo")+
+    labs(fill="Words")+ylab("Words")
+
+Camp<-WriMo%>%
+  filter(month=="07")%>%
+  complete(Date=seq.Date(min(Date),as.Date("2021-07-31"),by="day"))%>% 
+  mutate(year=format(Date,"%Y"))%>%group_by(year)%>%mutate(goal=seq(from=1667,to=50000,length.out=31)) 
+Camp%>%
+  ggplot(aes(Date))+
+  geom_bar(aes(y=goal,fill=goal),stat="identity",position="dodge",width=1,alpha=0.5)+
+  geom_bar(aes(y=monthly,fill=monthly),stat="identity",position="dodge",width=1)+
+  scale_fill_viridis(option="turbo")+
+  labs(fill="words")+ylab("Words")
+
 
 NaNoWriMo <- data.frame(goal=seq(from=1667,to=50000,by=1667))
 
