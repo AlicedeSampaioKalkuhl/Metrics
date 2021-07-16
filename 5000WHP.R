@@ -5,8 +5,8 @@ library(cowplot)
 library(imager)
 library(lubridate)
 
-Sprints <- read.delim("Sprints.txt", header=TRUE, sep = ",",fileEncoding="UTF-8-BOM",stringsAsFactors = FALSE)
-Sprints <- Sprints %>%
+Sprints<-read.delim("Sprints.txt",header=TRUE,sep = ",",fileEncoding="UTF-8-BOM",stringsAsFactors = FALSE)
+Sprints<-Sprints %>%
   mutate(WPH =Count*(60/Time))%>%
   mutate_all(~replace(., is.na(.), 0))%>% 
   mutate(Date=as.Date(Date, format="%d/%m/%Y"))%>%
@@ -100,10 +100,7 @@ Camp%>%
 
 NaNoWriMo <- data.frame(goal=seq(from=1667,to=50000,by=1667))
 
-
-
-View(Averages)
-View(Summary)
+View(Camp)
 load.image("daily.png")%>%plot(axes=F)
 
 
