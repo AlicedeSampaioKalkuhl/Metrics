@@ -32,7 +32,7 @@ Averages <- Summary %>% mutate(month = format(Date,"%m"),
   summarise(WPH = mean(WPH),WPD=mean(WPD)) 
 
 progress <- ggplot(Progress, aes(x=Date, y= WPH, fill=WPH))+
-  geom_hline(yintercept=280, colour="blue")+
+  geom_hline(yintercept=383, colour="blue")+
   geom_bar(stat="identity", width=1)+
   scale_fill_viridis(option="turbo")+
   ylab("average words per hour")+
@@ -40,7 +40,7 @@ progress <- ggplot(Progress, aes(x=Date, y= WPH, fill=WPH))+
 
 consistency<-
 ggplot(Consistency, aes(x=Date, y= WPD, fill=WPD))+
-  geom_hline(yintercept=330, colour="blue")+
+  geom_hline(yintercept=425, colour="blue")+
   geom_bar(stat="identity", width=1)+
   scale_fill_viridis(option="plasma",direction=-1)+
   ylab("daily words")+
@@ -68,10 +68,10 @@ plot_grid(
 
 
 
-WriMos<-ggplot(WriMo,aes(x=Date,y=,fill=monthly))+
+WriMos<-ggplot(WriMo,aes(x=Date,y=monthly,fill=monthly))+
   geom_bar(stat="identity")+
   scale_fill_viridis(option="turbo")+
-  ylab(" progress")+
+  ylab("progress")+
   theme_bw()
 
 #2021
@@ -86,11 +86,11 @@ JuNoWriMo%>%
     scale_fill_viridis(option="turbo")+
     labs(fill="Words")+ylab("Words")
 
-Camp<-WriMo%>%
-  filter(month=="07")%>%
-  complete(Date=seq.Date(min(Date),as.Date("2021-07-31"),by="day"))%>% 
+August<-WriMo%>%
+  filter(month=="08")%>%
+  complete(Date=seq.Date(min(Date),as.Date("2021-08-31"),by="day"))%>% 
   mutate(year=format(Date,"%Y"))%>%group_by(year)%>%mutate(goal=seq(from=1667,to=50000,length.out=31)) 
-Camp%>%
+August%>%
   ggplot(aes(Date))+
   geom_bar(aes(y=goal,fill=goal),stat="identity",position="dodge",width=1,alpha=0.5)+
   geom_bar(aes(y=monthly,fill=monthly),stat="identity",position="dodge",width=1)+
@@ -100,7 +100,5 @@ Camp%>%
 
 NaNoWriMo <- data.frame(goal=seq(from=1667,to=50000,by=1667))
 
-View(Camp)
-load.image("daily.png")%>%plot(axes=F)
-
-
+View(August)
+#load.image("daily.png")%>%plot(axes=F)
