@@ -56,11 +56,11 @@ WriMos<-ggplot(WriMo,aes(x=Date,y=monthly,fill=monthly))+
   ylab("progress")+
   theme_bw()
 
-October<-WriMo%>%
-  filter(month=="10")%>%
-  complete(Date=seq.Date(min(Date),as.Date("2021-10-31"),by="day"))%>% 
-  mutate(year=format(Date,"%Y"))%>%group_by(year)%>%mutate(goal=seq(from=1667,to=50000,length.out=31)) 
-October%>%
+November<-WriMo%>%
+  filter(month=="11")%>%
+  complete(Date=seq.Date(min(Date),as.Date("2021-11-30"),by="day"))%>% 
+  mutate(year=format(Date,"%Y"))%>%group_by(year)%>%mutate(goal=seq(from=1667,to=50000,length.out=30)) 
+November%>%
   ggplot(aes(Date))+
   geom_bar(aes(y=goal,fill=goal),stat="identity",position="dodge",width=1,alpha=0.5)+
   geom_bar(aes(y=monthly,fill=monthly),stat="identity",position="dodge",width=1)+
@@ -70,6 +70,6 @@ October%>%
 
 NaNoWriMo <- data.frame(goal=seq(from=1667,to=50000,by=1667))
 
-View(October)
+View(November)
 View(Averages)
 load.image("daily.png")%>%plot(axes=F)
